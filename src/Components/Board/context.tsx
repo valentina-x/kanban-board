@@ -119,8 +119,6 @@ const BoardProvider: React.FC<IBoardProvider> = ({ children }) => {
     setTimeout(() => {
       setBacklogTasks(updatedBacklogTasks);
     }, 0);
-    console.log('в контексте updatedBacklogTasks', updatedBacklogTasks);
-    console.log('в контексте backlogTasks', backlogTasks);
   };
 
   return (

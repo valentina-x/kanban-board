@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from '../TaskDetailPage/style.module.scss';
 import { useBoardContext } from '../Board/context';
@@ -14,18 +14,24 @@ const TaskDetailPage: React.FC = () => {
   const [editable, setEditable] = useState<boolean>(false);
   const [editedDescription, setEditedDescription] = useState<string>('');
 
-  const findTaskById = (taskId: string) => {
-    const allTasks = Object.values(columns)
-      .map((column) => column.tasks)
-      .flat();
+  const findTaskById = useMemo(() => {
+    return (taskId: string) => {
+      const allTasks = Object.values(columns)
+        .map((column) => column.tasks)
+        .flat();
 
-    return allTasks.find((task) => task.id === taskId) || null;
-  };
+      return allTasks.find((task) => task.id === taskId) || null;
+    };
+  }, [columns]);
 
-  useEffect(() => {
+  const updateTask = useCallback(() => {
     const task = findTaskById(taskId!);
     setTask(task);
-  }, [taskId]);
+  }, [findTaskById, taskId]);
+
+  useEffect(() => {
+    updateTask();
+  }, [updateTask]);
 
   const handleEditClick = () => {
     setEditable(true);

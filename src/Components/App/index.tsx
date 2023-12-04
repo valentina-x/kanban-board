@@ -9,30 +9,21 @@ import TaskDetailPage from '../TaskDetailPage';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path='/tasks/:taskId'
-          element={
-            <>
-              <BoardProvider>
-                <Header />
+      <BoardProvider>
+        <Header />
+        <Routes>
+          <Route
+            path='/tasks/:taskId'
+            element={
+              <>
                 <TaskDetailPage />
-                <Footer />
-              </BoardProvider>
-            </>
-          }
-        />
-        <Route
-          path='/'
-          element={
-            <BoardProvider>
-              <Header />
-              <Board />
-              <Footer />
-            </BoardProvider>
-          }
-        />
-      </Routes>
+              </>
+            }
+          />
+          <Route path='/' element={<Board />} />
+        </Routes>
+        <Footer />
+      </BoardProvider>
     </BrowserRouter>
   );
 }
