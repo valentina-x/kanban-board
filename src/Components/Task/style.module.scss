@@ -1,0 +1,32 @@
+@use 'sass:math';
+@import "../../Assets/scss/default-import";
+
+/* TASK STYLES */
+
+.task {
+	width: vwHandler(246);
+	padding: vwHandler(7) vwHandler(9) vwHandler(7) vwHandler(8);
+	background-color: $white;
+	font-size: vwHandler(18);
+	position: relative;
+	text-decoration: none;
+	border-radius: vwHandler(5);
+	overflow: hidden;
+	margin-top: vwHandler(15);
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	@media screen and (max-width: 480px) {
+		@function vwHandler($x) {
+			@return math.div($x, 3.38)+vw;
+		}
+
+		width: vwHandler(246);
+		padding: vwHandler(7) vwHandler(9) vwHandler(7) vwHandler(8);
+		font-size: vwHandler(18);
+		border-radius: vwHandler(5);
+		margin-top: vwHandler(15);
+	}
+}

@@ -1,0 +1,70 @@
+@use 'sass:math';
+@import "../../Assets/scss/default-import";
+
+/* FOOTER STYLES */
+
+@mixin style {
+	color: $white;
+	font-size: vwHandler(18);
+}
+
+.footer {
+	width: 100%;
+	height: vwHandler(55);
+	background-color: $dark-blue;
+
+	&__wrapper {
+		@include container;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	&__activetasks {
+		@include style;
+		margin-right: vwHandler(32);
+	}
+
+	&__finishedtasks {
+		@include style;
+	}
+
+	&__copy {
+		@include style;
+		margin: 0 0 0 auto;
+	}
+
+	@media screen and (max-width: 480px) {
+		@function vwHandler($x) {
+			@return math.div($x, 3.38)+vw;
+		}
+
+		@mixin style {
+			font-size: vwHandler(18);
+		}
+
+		height: auto;
+		padding: vwHandler(20) 0;
+
+		&__wrapper {
+			@include container;
+			height: auto;
+			flex-direction: column;
+			align-items: center
+		}
+
+		&__activetasks {
+			@include style;
+			margin-right: 0;
+		}
+
+		&__finishedtasks {
+			@include style;
+		}
+
+		&__copy {
+			@include style;
+			margin: 0;
+		}
+	}
+}

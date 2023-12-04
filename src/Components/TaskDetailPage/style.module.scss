@@ -1,0 +1,137 @@
+@use 'sass:math';
+@import "../../Assets/scss/default-import";
+
+/* TASKDETAILPAGE STYLES */
+
+.content {
+	flex: 1;
+	background-color: $blue;
+	width: 100%;
+
+	&__wrapper {
+		width: vwHandler(1200);
+		background-color: $white;
+		padding: vwHandler(22) vwHandler(28);
+		margin: vwHandler(22) auto vwHandler(20);
+		border-radius: vwHandler(5);
+		overflow: hidden;
+		position: relative;
+	}
+
+	&__close {
+		width: vwHandler(23);
+		height: vwHandler(23);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: vwHandler(17);
+		right: vwHandler(17);
+		z-index: 3;
+
+		& svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__title {
+		font-size: vwHandler(24);
+		margin: 0 0 vwHandler(35) 0;
+	}
+
+	&__text {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		font-size: vwHandler(18);
+		width: vwHandler(621);
+
+		& textarea {
+			width: 100%;
+			max-height: vwHandler(300);
+			padding: vwHandler(20);
+			font-size: vwHandler(18);
+			resize: none;
+		}
+
+		& div {
+			width: 100%;
+		}
+	}
+
+	&__btn {
+		width: vwHandler(102);
+		height: vwHandler(29);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $white;
+		font-size: vwHandler(18);
+		background-color: $blue;
+		cursor: pointer;
+		overflow: hidden;
+		border-radius: vwHandler(5);
+		margin-top: vwHandler(50);
+		transition: all 0.6s;
+
+		&:hover {
+			background-color: $dark-blue;
+		}
+
+		&:nth-child(2) {
+			margin-right: vwHandler(10);
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		@function vwHandler($x) {
+			@return math.div($x, 3.38)+vw;
+		}
+
+		&__wrapper {
+			width: vwHandler(300);
+			padding: vwHandler(22) vwHandler(28);
+			margin: vwHandler(22) auto vwHandler(20);
+			border-radius: vwHandler(5);
+		}
+
+		&__close {
+			width: vwHandler(23);
+			height: vwHandler(23);
+			top: vwHandler(17);
+			right: vwHandler(17);
+		}
+
+		&__title {
+			font-size: vwHandler(24);
+			margin: 0 0 vwHandler(35) 0;
+		}
+
+		&__text {
+			width: 100%;
+			font-size: vwHandler(18);
+
+			& textarea {
+				padding: vwHandler(20);
+				font-size: vwHandler(18);
+			}
+		}
+
+		&__btn {
+			width: vwHandler(102);
+			height: vwHandler(29);
+			font-size: vwHandler(18);
+			border-radius: vwHandler(5);
+			margin-top: vwHandler(10);
+
+			&:first-child {
+				margin-right: vwHandler(10);
+			}
+		}
+	}
+}

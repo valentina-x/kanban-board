@@ -1,0 +1,45 @@
+@use 'sass:math';
+@import "../../Assets/scss/default-import";
+
+/* HEADER STYLES */
+
+.header {
+	width: 100%;
+	height: vwHandler(55);
+	background-color: $dark-blue;
+
+	&__wrapper {
+		@include container;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__title {
+		margin: 0;
+		color: $white;
+		font-weight: normal;
+		font-size: vwHandler(28);
+	}
+
+	@media screen and (max-width: 480px) {
+
+		@function vwHandler($x) {
+			@return math.div($x, 3.38)+vw;
+		}
+
+		height: auto;
+		background-color: $blue;
+		padding-top: vwHandler(10);
+		padding-bottom: vwHandler(90);
+
+		&__wrapper {
+			max-width: 100%;
+		}
+
+		&__title {
+			opacity: 0;
+		}
+	}
+}

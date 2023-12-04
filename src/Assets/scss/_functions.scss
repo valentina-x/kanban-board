@@ -1,0 +1,19 @@
+@use 'sass:math';
+
+@function remHandler($size) {
+	@return math.div($size, 16)+rem;
+}
+
+@function vwHandler($x) {
+	@return math.div($x, 12.3)+vw;
+}
+
+@function prcHandler($x, $y, $symbol) {
+	@return math.div($x, $y)+$symbol;
+}
+
+@mixin container() {
+	width: 100%;
+	max-width: vwHandler(1200);
+	margin: 0 auto;
+}

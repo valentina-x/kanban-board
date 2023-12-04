@@ -1,0 +1,111 @@
+@use 'sass:math';
+@import "../../Assets/scss/default-import";
+
+/* USER STYLES */
+
+.user {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+
+	& img {
+		width: vwHandler(40);
+		height: vwHandler(40);
+		object-fit: cover;
+		border-radius: 100%;
+		overflow: hidden;
+	}
+
+	&__arrow {
+		width: vwHandler(12);
+		height: vwHandler(12);
+		margin-left: vwHandler(8);
+		transition: transform 0.6s;
+
+		&.active {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__nav {
+		width: vwHandler(134);
+		display: flex;
+		flex-direction: column;
+		background-color: #fff;
+		padding: vwHandler(8) vwHandler(7);
+		position: absolute;
+		right: 0;
+		top: 140%;
+		z-index: 1;
+		opacity: 0;
+		pointer-events: none;
+		border-radius: vwHandler(5);
+		transition: all 0.6s;
+
+		&.active {
+			opacity: 1;
+			pointer-events: initial;
+		}
+
+		&:after {
+			content: '';
+			border: vwHandler(11) solid transparent;
+			border-bottom: vwHandler(11) solid #fff;
+			position: absolute;
+			top: vwHandler(-22);
+			left: vwHandler(85);
+		}
+
+		& a {
+			text-decoration: none;
+			font-size: vwHandler(14);
+			margin-bottom: vwHandler(10);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&:hover {
+				color: $blue;
+			}
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		@function vwHandler($x) {
+			@return math.div($x, 3.38)+vw;
+		}
+
+		margin-right: vwHandler(14);
+
+		& img {
+			width: vwHandler(40);
+			height: vwHandler(40);
+		}
+
+		&__arrow {
+			width: vwHandler(12);
+			height: vwHandler(12);
+			margin-left: vwHandler(8);
+		}
+
+		&__nav {
+			width: vwHandler(134);
+			padding: vwHandler(8) vwHandler(7);
+			border-radius: vwHandler(5);
+
+			&:after {
+				border: vwHandler(11) solid transparent;
+				border-bottom: vwHandler(11) solid #fff;
+				top: vwHandler(-22);
+				left: vwHandler(85);
+			}
+
+			& a {
+				font-size: vwHandler(14);
+				margin-bottom: vwHandler(10);
+			}
+		}
+	}
+}

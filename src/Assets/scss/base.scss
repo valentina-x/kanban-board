@@ -1,0 +1,33 @@
+@import "_default-import";
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	color: $black;
+	font-family: $regular, Arial, Helvetica, sans-serif;
+}
+
+a {
+	color: $black;
+}
+
+label {
+	position: relative;
+}
+
+#root {
+	width: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
